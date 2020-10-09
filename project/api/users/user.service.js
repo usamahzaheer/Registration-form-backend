@@ -1,14 +1,25 @@
+// In this file i have define following services 
+// create
+// getUser
+// getUserByUserId
+// getUserByUserEmail
+// updateUser
+// deleteUser
+
+//importing pool for running query
 const pool = require("../../config/database");
+const { getUserByUserId, deleteUser } = require("./user.controller");
 
 module.exports = {
+  // defining a method create which will receive data from controller and a callback 
   create: (data, callBack) => {
     pool.query(
-      `insert into signup (firstName, lastName,  email, password) 
-                values(?,?,?,?)`,
+      `insert into signup (firstName, lastName,  email, password)   
+                values(?,?,?,?)`, 
+                //giving values that user will pass at run time 
       [
         data.first_name,
         data.last_name,
-
         data.email,
         data.password
 
